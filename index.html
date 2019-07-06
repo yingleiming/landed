@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>landed</title>
+    <style>
+        #landForm{
+            width: 800px;
+            height: 600px;
+            border: 1px solid #ddd;
+            margin: auto;
+        }
+        #landForm>label{
+            display: block;
+        }
+        #landForm input{
+            width: 300px;
+            height: 30px;
+            padding-left: 10px;
+            margin: 10px 0 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<form action="landForm" id="landForm">
+    <label for="userName">
+        <input type="text" placeholder="请输入用户名" id="userName">
+    </label>
+    <label for="passWord">
+        <input type="text" placeholder="请输入密码" id="passWord">
+    </label>
+    <input type="button" value="登录" id="landed">
+</form>
+
+<script>
+    document.getElementById("landed").onclick=function () {
+        //步骤一：创建异步对象,设置请求头
+        var xhr = new XMLHttpRequest();
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        //步骤二：设置请求的url参数
+        xhr.open("post","https://localhost:8080?userName=111&passWord=123456");
+        //步骤三：发送请求
+        xhr.send("userName=111&passWord=123456");
+        //步骤四：设置状态码
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4&&xhr.status==200){
+                console.log(xhr.responseText);
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
