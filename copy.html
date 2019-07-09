@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let obj = {
+        name:"ylm",
+        age:30
+    }
+    let copyObj = {
+
+    }
+
+    // 方式一：
+    for(let key in obj){
+        copyObj[key] = obj[key];
+    }
+
+    console.log(copyObj);//{name: "ylm", age: 30}
+
+    //方式二 第一个参数是目标对象 第二个参数是源对象
+    let apple = {
+        brand : "红富士",
+        weight : "10g"
+    }
+    let newApple = {}
+    Object.assign(newApple,apple);
+
+    console.log(newApple);//{brand: "红富士", weight: "10g"}
+
+    //验证上面个的两种方式只实现了浅拷贝
+    obj.name = "mayun";
+    console.log(copyObj);//{name: "ylm", age: 30}
+    console.log(obj);//{name: "mayun", age: 30}
+
+    apple.brand = "南汇";
+    console.log(newApple);//{brand: "红富士", weight: "10g"}
+    console.log(apple);//{brand: "南汇", weight: "10g"}
+
+
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>
