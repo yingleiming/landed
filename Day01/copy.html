@@ -41,7 +41,24 @@
     console.log(newApple);//{brand: "红富士", weight: "10g"}
     console.log(apple);//{brand: "南汇", weight: "10g"}
 
+    let obj2 = {name:"Bruce",age:20,arr:["apple","orange"]};
+    let copObj2 = {};
+    Object.assign(copObj2,obj2);
+    console.log(obj2);//{name: "Bruce", age: 20, arr: Array(2)}
+    console.log(copObj2);//{name: "Bruce", age: 20, arr: Array(2)}
 
+    obj2.name = "Lee";
+    console.log(obj2);//{name: "Lee", age: 20, arr: Array(2)}
+    console.log(copObj2);//{name: "Bruce", age: 20, arr: Array(2)}
+
+    obj2.arr.push("banana");
+    console.log(obj2);//{name: "Lee", age: 20, arr: Array(3)}
+    console.log(copObj2);//{name: "Bruce", age: 20, arr: Array(3)}
+    /*
+    * 55行 56行对比，修改源对象数组（数组属于引用类型）中的值后，目标对象数组中的值也发生了改变
+    * 说明只是进行了浅拷贝
+    *
+    * */
 </script>
 
 

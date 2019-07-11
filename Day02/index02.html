@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day02</title>
+</head>
+<body>
+
+
+<script>
+    //1.创建异步对象
+    var xhr = new XMLHttpRequest();
+    //2.设置请求的url参数
+    xhr.open("get","http://localhost:3002/index.html",true);
+    //3.发送数据
+    xhr.send();
+    //4.设置状态码
+    xhr.onreadystatechange = function (req,res) {
+        if(xhr.readyState==4){
+            if(xhr.status>=200&&xhr.status<300||
+            xhr.status==304){
+                console.log(xhr.responseText)
+            }
+            else{
+                console.log("服务器错误");
+            }
+        }
+    }
+
+
+
+</script>
+
+
+</body>
+</html>
